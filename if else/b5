@@ -1,1 +1,21 @@
-
+#include <stdio.h>
+#include <math.h>
+int main()
+{
+    double a,b,c;
+    scanf("%lf %lf %lf",&a,&b,&c);
+    int delta = b*b-(4*a*c);
+    if (delta > 0)
+    {
+        printf("nghiem 1 la %lf",(-b + sqrt(delta))/2*a);
+        printf("nghiem 1 la %lf",(-b - sqrt(delta))/2*a);
+    }
+    else if (delta ==0)
+    {
+        printf("nghiem kep la %lf",-b/2*a);
+    }
+    else if (delta < 0)
+    {
+        printf("vo nghiem");
+    }
+}
