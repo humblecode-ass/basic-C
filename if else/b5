@@ -1,29 +1,21 @@
 #include <stdio.h>
-int main()
-{
-    float a,b,c,d,e,f;
-    printf("Nhap a: ");scanf("%f",&a);
-    printf("Nhap b: ");scanf("%f",&b);
-    printf("Nhap c: ");scanf("%f",&c);
-    printf("Nhap d: ");scanf("%f",&d);
-    printf("Nhap e: ");scanf("%f",&e);
-    printf("Nhap f: ");scanf("%f",&f);
-    float D = a * e - d * b;
-    float Dx = c * e - f * b;
-    float Dy = a * f - d * c;
-    if(D==0)
-    {
-        if (Dx==0&&Dy==0)
-        {
-            printf("Vo so nghiem");
-        }
-        else
-        {
-            printf("Vo nghiem");
-        }
-    }
-    else
-    {
-        printf("Nghiem 1 la %.2f Nghiem 2 la %.2f",Dx/D,Dy/D);
-    }
-}
+ #include <math.h>
+ int main()
+ {
+     double a,b,c;
+     scanf("%lf %lf %lf",&a,&b,&c);
+     int delta = b*b-(4*a*c);
+     if (delta > 0)
+     {
+         printf("nghiem 1 la %lf",(-b + sqrt(delta))/2*a);
+         printf("nghiem 1 la %lf",(-b - sqrt(delta))/2*a);
+     }
+     else if (delta ==0)
+     {
+         printf("nghiem kep la %lf",-b/2*a);
+     }
+     else if (delta < 0)
+     {
+         printf("vo nghiem");
+     }
+ }
