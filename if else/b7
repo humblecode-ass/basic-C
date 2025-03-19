@@ -1,0 +1,26 @@
+#include <stdio.h>
+int main()
+{
+    int Diem;
+    printf("Nhap diem trung binh"),scanf("%d",&Diem);
+    if (Diem < 5)
+    {
+        printf("Yeu");
+    }
+    else if (Diem >=5 && Diem < 7 )
+    {
+        printf("TB");
+    }
+    else if (Diem >=7 && Diem <8)
+    {
+        printf("Kha");
+    }
+    else if(Diem >=8 && Diem <9)
+    {
+        printf("Gioi");
+    }
+    else if (Diem >=9)
+    {
+        printf("Xuat Sac");
+    }
+}
