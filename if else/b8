@@ -1,0 +1,39 @@
+#include <stdio.h>
+#include <math.h>
+#include <stdbool.h>
+bool is_triangle(int a,int b,int c)
+{
+    if (a+b>c|b+c>a||c+a>b)
+    return true;
+}
+int triangle_type(int a,int b,int c)
+{
+    if(a==b&&b==c)
+        printf("Tam giac deu\n");
+    else if (a==b&&c*c==a*a+b*b||
+            b==c&&a*a==b*b+c*c||
+            c==a&&b*b==c*c+a*a)
+        printf("Tam giac vuong can\n");
+    else if (c*c==a*a+b*b||a*a==b*b+c*c||b*b==c*c+a*a)
+        printf("Tam giac vuong\n");
+    else if (a==b||b==c||c==a)
+        printf("Tam giac can\n");
+    else
+        printf("Tam giac thuong\n");
+}
+int main()
+{
+    int a,b,c;
+    printf("Nhap a b c "),scanf("%d %d %d",&a,&b,&c);
+    float p = (a+b+c)/2.0;
+    if (is_triangle(a,b,c))
+    {
+        triangle_type(a,b,c);
+        printf("Chu vi la %.2d\n",a+b+c);
+        printf("Dien tich la %.2f\n",sqrt(p*(p-a)*(p-b)*(p-c)));
+    }
+}
+   
+
+    
+
