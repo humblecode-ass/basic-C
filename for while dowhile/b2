@@ -1,0 +1,22 @@
+#include <stdio.h>
+#include <math.h>
+#include <stdbool.h>
+bool prime_check(int n)
+{
+    if (n<2)
+        return false;
+    for(int i=2;i<=sqrt(n);i++)
+    {
+        if (n % i == 0)
+            return false;
+    }
+    return true;
+}
+int main(int n)
+{
+    printf("Nhap so "),scanf("%d",&n);
+    if (prime_check(n))
+        printf("La so nguyen to");
+    else
+        printf("Khong phai so nguyen to");
+}
