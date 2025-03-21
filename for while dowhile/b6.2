@@ -1,0 +1,16 @@
+#include <stdio.h>
+int main()
+{
+    int x;
+    int sum = 0;
+    printf("Nhap so "),scanf("%d",&x);
+    for(int i=1;i<=x;i++)
+    {
+        if(x%i==0)
+        sum+=i;    
+    }
+    if (sum == x * 2)
+    printf("So %d la hoan hao",x);
+    else
+    printf("So %d khong hoan hao",x);
+}
