@@ -1,0 +1,22 @@
+#include <stdio.h>
+#include <string.h>
+char* convert(int n,int base)
+{
+    static char result[30];
+    int index = 0;
+    while (n!=0)
+    {
+        result[index++]=(n%base<10)?n%base+'0':n%base +'A';
+        n/=base;
+    }
+    result[index]='\0';
+    strrev(result);
+    return result;
+}
+int main(int n)
+{
+    printf("Nhap so "),scanf("%d",&n);
+    printf("Co so 2 %s\n",convert(n,2));
+    printf("Co so 8 %s\n",convert(n,8));
+    printf("Co so 16 %s\n",convert(n,16));
+}
