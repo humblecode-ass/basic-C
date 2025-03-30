@@ -1,0 +1,42 @@
+#include <stdio.h>
+#include <math.h>
+#define PI 3.14
+double gt(double n)
+{
+    double total=1;
+    for(int i =1;i<=n;i++)
+        total*=i;
+    return total;
+}
+double poww(double x,int n)
+{
+    double result=1;
+    for(int i=1;i<=n;i++)
+        result*=x;
+    return result;
+}
+double minus(int n)
+{
+    return (n%2==0)?-1:1;
+}
+int main()
+{
+    double x,eps;
+    printf("Nhap x "),scanf("%lf",&x);
+    printf("Nhap eps "),scanf("%lf",&eps);
+    x = x * PI / 180.0;
+    double sinx=0;
+    double temp;
+    int i=1;
+    do
+    {
+       temp=minus(i)*poww(x,i)/gt(i);
+       sinx+=temp;
+       i+=2;
+    }while(fabs(temp)>eps);
+    printf("%lf",sinx);
+}   
+
+
+
+
