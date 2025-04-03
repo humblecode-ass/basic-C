@@ -1,0 +1,35 @@
+#include <stdio.h>
+#include <math.h>
+int gt(int n)
+{
+    if(n==0)
+    return 1;
+    int total=1;
+    for(int i=1;i<=n;i++)
+    total*=i;
+    return total;
+}
+double poww(int x,int n)
+{
+    if(n==0)
+    return 1;
+    int total=1;
+    for(int i=1;i<=n;i++)
+    total*=x;
+    return total;
+}
+int main()
+{
+    int x;double eps;
+    printf("Nhap x "),scanf("%d",&x);
+    printf("Nhap eps "),scanf("%lf",&eps);
+    double temp,result=0;
+    int i=0;
+    do
+    {
+        temp=poww(x,i)/gt(i);
+        result+=temp;
+        i++;
+    }while(fabs(temp)>eps);
+    printf("%lf",result);
+}
