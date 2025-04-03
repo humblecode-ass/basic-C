@@ -1,0 +1,25 @@
+#include <stdio.h>
+#include <math.h>
+double interest(int capital,double interest_rate,int year)
+{
+    return capital*pow(1+interest_rate/100.0,year); 
+}
+int main()
+{
+    int gdp;
+    double interest_rate;
+    printf("Nhap GDP 2014: "),scanf("%d",&gdp);
+    printf("Nhap toc do tang truong(%%): "),scanf("%lf",&interest_rate);
+    printf("Nam\tGDP\n");
+    int targetgdp=gdp*2;
+    int i=0;
+    double temp;
+    printf("2014\t%d",gdp);
+    do
+    {
+        temp = interest(gdp,interest_rate,i);
+        i++;
+        printf("%d\t%lf\n",2014+i,temp);
+    }while(temp<targetgdp);
+    return 0;
+}
