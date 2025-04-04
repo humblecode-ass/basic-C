@@ -1,0 +1,14 @@
+#include <stdio.h>
+#include <math.h>
+double interest(double capital,int year)
+{
+    return capital*pow(1+0.45/100,year);
+}
+int main()
+{
+    double x;
+    int y;
+    printf("Nhap so tien ban dau "),scanf("%lf",&x);
+    printf("Nhap so thang gui tien "),scanf("%d",&y);
+    printf("%.2lf",interest(x,y));
+}
