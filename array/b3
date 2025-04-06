@@ -1,0 +1,33 @@
+#include <stdio.h>
+#include <stdlib.h>
+int main()
+{
+    int n;
+    printf("Nhap so luong phan tu "),scanf("%d",&n);
+    int *arr=(int*)malloc(n*sizeof(int));
+    for(int i=0;i<n;i++)
+    printf("Nhap so thu %d ",i+1),scanf("%d",&arr[i]);
+    int total_sum=0,posi_sum=0,total_num=n,posi_num=0;
+    for(int i=0;i<n;i++)
+    {
+        total_sum+=arr[i];
+        if(arr[i]>=0)
+        {
+        posi_sum+=arr[i];
+        posi_num+=1;
+        }
+    }
+    printf("Tong tat ca cac so la %d\n",total_sum);
+    printf("Tong tat ca cac so duong la %d\n",posi_sum);
+    printf("Tong tat ca cac so la am %d\n",total_sum-posi_sum);
+    printf("Trung binh cong cac so la %lf\n",total_sum*1.0/total_num);
+    if(posi_num>0)
+    printf("Trung binh cong cac so duong la %lf\n",posi_sum*1.0/posi_num);
+    else
+    printf("Trung binh cong cac so duong la 0");
+    if(total_sum-posi_sum>0)
+    printf("Trung binh cong cac so am la %lf\n",(total_sum-posi_sum)*1.0/(total_num-posi_num));    
+    else
+    printf("Trung binh cong cac so am la 0");
+    free(arr);
+}
