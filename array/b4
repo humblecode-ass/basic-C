@@ -2,7 +2,7 @@
 #include <stdlib.h>
 int main()
 {
-    int n;
+    int n,max_location,min_location;
     printf("Chuoi dai bao nhieu so "),scanf("%d",&n);
     int *arr =(int*)malloc(n*sizeof(int));
     for(int i=0;i<n;i++)
@@ -11,11 +11,11 @@ int main()
     for(int i=1;i<n;i++)
     {
         if(arr[i]<min)
-        min=arr[i];
+        min=arr[i],min_location=i+1;
         if(arr[i]>max)
-        max=arr[i];
+        max=arr[i],max_location=i+1;
     }
     free(arr);
-    printf("Max la %d ",max);
-    printf("Min la %d ",min);
+    printf("Max la %d o vi tri thu %d\n",max,max_location);
+    printf("Min la %d o vi tri thu %d",min,min_location);
 }
