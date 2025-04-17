@@ -1,0 +1,64 @@
+#include <stdio.h>
+void nhap(int x,int y,int array[50][50])
+{
+    for(int i=0;i<x;i++)
+        for(int j=0;j<y;j++)
+            printf("Nhap so hang %d cot %d ",i+1,j+1),scanf("%d",&array[i][j]);
+}
+void print(int x,int y,int array[50][50])
+{
+    for(int i=0;i<x;i++)
+    {
+        for(int j=0;j<y;j++)
+            printf("%d ",array[i][j]);
+        printf("\n");
+    }
+}
+void mul(int array1[50][50],int array2[50][50],int array[50][50],int a,int b,int c,int d)
+{
+    if(b!=c)
+    {
+        printf("Khong nhan duoc 2 ma tran");
+        return;
+    }    
+    for(int i=0;i<a;i++)
+        for(int j=0;j<d;j++)
+            {   array[i][j]=0;
+                for(int l=0;l<b;l++)
+                array[i][j]+=array1[i][l]*array2[l][j];
+            }
+    printf("Ma tran 1 nhan ma tran 2 la \n");
+    print(a,d,array);
+}
+void cal(int array1[50][50],int array2[50][50],int array[50][50],int a,int b,int c,int d)
+{
+    if(a!=b||a!=c||a!=d)
+    {
+        printf("Khong cong duoc 2 ma tran");
+        return;
+    }
+    for(int i=0;i<a;i++)
+        for(int j=0;j<a;j++)
+            array[i][j]=array1[i][j]+array2[i][j];
+    printf("Ma tran 1 cong ma tran 2 la \n");
+    print(a,a,array);
+}
+int main()
+{
+    int array[50][50];
+    int array1[50][50];
+    int array2[50][50];
+    int a,b,c,d;
+    printf("Nhap so hang cua ma tran 1 "),scanf("%d",&a);
+    printf("Nhap so cot cua ma tran 1 "),scanf("%d",&b);
+    nhap(a,b,array1);
+    printf("Ma tran thu nhat la: \n");
+    print(a,b,array1);
+    printf("Nhap so hang cua ma tran 2 "),scanf("%d",&c);
+    printf("Nhap so cot cua ma tran 2 "),scanf("%d",&d);
+    nhap(c,d,array2);
+    printf("Ma tran thu hai la: \n"); 
+    print(c,d,array2);
+    mul(array1,array2,array,a,b,c,d);
+    cal(array1,array2,array,a,b,c,d);
+}
