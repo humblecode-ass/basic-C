@@ -1,0 +1,98 @@
+#include <stdio.h>
+#include <stdlib.h>
+typedef struct Node//self calling point to itself
+{
+    int x;
+    struct Node*next;
+}Node;
+int search(Node*Pcurr,Node*Pfind)
+{
+    Node*curr=Pcurr;
+    while(curr!=NULL)
+    {   
+        if(curr==Pfind)
+        {
+            printf("Found value is %d\n",curr->x);
+            return(curr->x);
+        }
+        curr=curr->next;
+    }return -1;
+}
+void insert_end(Node**Pcurr,int value)
+{
+    Node*new_node=malloc(sizeof(Node));
+    if(new_node==NULL)
+        exit(01);
+    new_node->x=value;
+    new_node->next=NULL;
+    if(*Pcurr==NULL)
+    {   
+        *Pcurr=new_node;
+        return;
+    }
+    Node *curr=*Pcurr;
+    while(curr->next!=NULL)
+        curr=curr->next;
+    curr->next=new_node;
+}
+void insert_begin(Node**Pcurr,int value)
+{
+    Node*new_node=malloc(sizeof(Node));
+    if(new_node==NULL)
+        exit(03);
+    new_node->x=value;
+    new_node->next=*Pcurr;
+    *Pcurr=new_node;
+}
+void deallocate(Node**Pcurr)
+{
+    Node*curr=*Pcurr;
+    while(curr!=NULL)
+    {
+        Node*temp=curr;
+        curr=curr->next;
+        free(temp);
+    }//freeing all the Node
+    *Pcurr=NULL;//freeing the pointer
+}
+void insert_after(Node*Pcurr,int value)
+{
+    Node*new_node=malloc(sizeof(Node));
+    if(new_node==NULL)
+        exit(04);
+    new_node->x=value;
+    new_node->next=Pcurr->next;
+    Pcurr->next=new_node;
+}
+void insert_sorted(Node**Pcurr,int value)
+{
+    if(*Pcurr==NULL||(*Pcurr)->x>=value)
+    {
+        insert_begin(Pcurr,value);
+        return;
+    }
+    Node*curr=*Pcurr;
+    while(curr->next!=NULL)
+    {
+        if(curr->next->x>=value)
+        {   
+            insert_after(curr,value);
+            return;
+        }
+        curr=curr->next;
+    }
+    insert_after(curr,value);
+}
+
+int main()
+{
+    Node *elem=NULL;
+    insert_sorted(&elem,1);
+    insert_sorted(&elem,4);
+    insert_sorted(&elem,2);
+    insert_sorted(&elem,7);
+    search(elem,elem->next);
+    for(Node*curr=elem;curr!=NULL;curr=curr->next)
+        printf("%d ",curr->x);
+    deallocate(&elem);
+}    
